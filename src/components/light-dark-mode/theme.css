@@ -1,16 +1,29 @@
 :root {
-    --background: #ffffff;
-    --text-primary: #000;
-    --button-bg: #000;
-    --button-text: #ffffff;
+    --background-light: #ffffff;
+    --text-primary-light: #000;
+    --button-bg-light: #000;
+    --button-text-light: #ffffff;
+
+    --background-dark: #000000;
+    --text-primary-dark: #fff;
+    --button-bg-dark: #fff;
+    --button-text-dark: #000;
+}
+
+[data-theme="light"] {
+    --background: var(--background-light);
+    --text-primary: var(--text-primary-light);
+    --button-bg: var(--button-bg-light);
+    --button-text: var(--button-text-light);
 }
 
 [data-theme="dark"] {
-    --background: #000000;
-    --text-primary: #fff;
-    --button-bg: #fff;
-    --button-text: #000;
+    --background: var(--background-dark);
+    --text-primary: var(--text-primary-dark);
+    --button-bg: var(--button-bg-dark);
+    --button-text: var(--button-text-dark);
 }
+
 .light-dark-mode {
     background-color: var(--background);
     height: 100vh;
@@ -32,7 +45,7 @@
 .light-dark-mode .container p {
     color: var(--text-primary);
     font-size: 40px;
-    margin: 0px;
+    margin: 0;
 }
 
 .light-dark-mode .container button {

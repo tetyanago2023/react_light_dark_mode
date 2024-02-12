@@ -1,20 +1,13 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
-
-export default function useLocalStorage(key, defaultValue) {
+const useLocalStorage = (key, defaultValue) => {
     const [value, setValue] = useState(() => {
-        let currentValue;
-
         try {
-            currentValue = JSON.parse(
-                localStorage.getItem(key) || String(defaultValue)
-            );
+            return JSON.parse(localStorage.getItem(key)) || defaultValue;
         } catch (error) {
-            console.log(error);
-            currentValue = defaultValue;
+            console.error("Error parsing local storage:", error);
+            return defaultValue;
         }
-
-        return currentValue;
     });
 
     useEffect(() => {
@@ -23,3 +16,5 @@ export default function useLocalStorage(key, defaultValue) {
 
     return [value, setValue];
 }
+
+export default useLocalStorage;
